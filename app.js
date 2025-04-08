@@ -3,11 +3,8 @@ const express = require("express")
 const morgan = require("morgan")
 const cors = require("cors")
 const bodyParser = require("body-parser")
-const connectDB = require("./config/db")
 
 const app = express()
-
-connectDB()
 
 app.use(cors())
 
@@ -34,26 +31,6 @@ app.use((req, res, next) => {
 
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"))
 
-app.use('/auth', [
-    require('./routes/auth/signup'),
-    require('./routes/auth/verifyOTP'),
-    require('./routes/auth/resendVerification'),
-    require('./routes/auth/signin'),
-    require('./routes/auth/getProfile'),
-    require('./routes/auth/updateProfile'),
-    require('./routes/auth/updateAvatar'),
-    require('./routes/auth/sendMail'),
-])
-
-app.use('/artizan', [
-    require('./routes/artizan/findArtizan'),
-    require('./routes/artizan/booking'),
-    require('./routes/artizan/getBookings'),
-    require('./routes/artizan/getSingleBooking'),
-    require('./routes/artizan/done'),
-    require('./routes/artizan/rateArtizan')
-])
-
 app.use('/leadway', [
     require('./routes/leadway/signup'),
     require('./routes/leadway/deposit'),
@@ -62,15 +39,6 @@ app.use('/leadway', [
     require('./routes/leadway/withdrawCancelled'),
     require('./routes/leadway/withdrawCompleted'),
     require('./routes/leadway/withdrawRequest'),
-])
-
-app.use('/waitlist', [
-    require('./routes/waitlist/waitlist'),
-    require('./routes/waitlist/getList')
-])
-
-app.use('/mail', [
-    require('./routes/mail/acceptJob')
 ])
 
 app.use('/', [
