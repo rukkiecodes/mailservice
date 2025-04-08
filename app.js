@@ -31,14 +31,14 @@ app.use((req, res, next) => {
 
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"))
 
-app.use('/leadway', [
-    require('./routes/leadway/signup'),
-    require('./routes/leadway/deposit'),
-    require('./routes/leadway/depositCompleted'),
-    require('./routes/leadway/depositCanceled'),
-    require('./routes/leadway/withdrawCancelled'),
-    require('./routes/leadway/withdrawCompleted'),
-    require('./routes/leadway/withdrawRequest'),
+app.use('/bluezone', [
+    require('./routes/bluezone/signup'),
+    require('./routes/bluezone/deposit'),
+    require('./routes/bluezone/depositCompleted'),
+    require('./routes/bluezone/depositCanceled'),
+    require('./routes/bluezone/withdrawCancelled'),
+    require('./routes/bluezone/withdrawCompleted'),
+    require('./routes/bluezone/withdrawRequest'),
 ])
 
 app.use('/', [

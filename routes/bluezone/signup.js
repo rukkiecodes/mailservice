@@ -15,7 +15,7 @@ router.post("/signup", async (req, res) => {
   const { email, name } = req.body;
 
   const mailOptions = {
-    from: "Leadway Finance",
+    from: "Bluezone Finance",
     to: email,
     subject: "Account Creation Successful",
     html: `<div style="background-color: #f4f6f8; padding: 40px 0; font-family: Arial, sans-serif;">
@@ -23,12 +23,12 @@ router.post("/signup", async (req, res) => {
     
     <!-- Header with logo -->
     <div style="background-color: #1D2330; padding: 24px; text-align: center;">
-      <img src="https://res.cloudinary.com/rukkiecodes/image/upload/v1741265526/leadway/logo_hhzua0.png" alt="Leadway Finance" style="height: 40px;" />
+      <img src="https://res.cloudinary.com/rukkiecodes/image/upload/v1741265526/leadway/logo_hhzua0.png" alt="Bluezone Finance" style="height: 40px;" />
     </div>
 
     <!-- Main Content -->
     <div style="padding: 32px; color: #1D2330;">
-      <h2 style="margin-top: 0;">Welcome to Leadway Finance 🎉</h2>
+      <h2 style="margin-top: 0;">Welcome to Bluezone Finance 🎉</h2>
 
       <p style="font-size: 16px;">
         Hello <strong>${name}</strong>,
@@ -53,13 +53,13 @@ router.post("/signup", async (req, res) => {
       </p>
 
       <p style="margin-top: 40px; font-size: 15px;">
-        Welcome aboard,<br><strong>The Leadway Finance Team</strong>
+        Welcome aboard,<br><strong>The Bluezone Finance Team</strong>
       </p>
     </div>
 
     <!-- Footer -->
     <div style="background-color: #f0f2f4; padding: 20px; text-align: center; font-size: 12px; color: #888;">
-      You’re receiving this email because you recently created an account with Leadway Finance.
+      You’re receiving this email because you recently created an account with Bluezone Finance.
     </div>
   </div>
 </div>

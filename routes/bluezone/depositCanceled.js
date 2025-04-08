@@ -15,15 +15,15 @@ router.post("/depositCancelled", async (req, res) => {
   const { email, name, amount } = req.body;
 
   const mailOptions = {
-    from: "Leadway Finance",
+    from: "Bluezone Finance",
     to: email,
-    subject: "Leadway Deposit Cancelled",
+    subject: "Bluezone Deposit Cancelled",
     html: `<div style="background-color: #f4f6f8; padding: 40px 0; font-family: Arial, sans-serif;">
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); overflow: hidden;">
 
     <!-- Header -->
     <div style="background-color: #1D2330; padding: 24px; text-align: center;">
-      <img src="https://res.cloudinary.com/rukkiecodes/image/upload/v1741265526/leadway/logo_hhzua0.png" alt="Leadway Finance" style="height: 40px;" />
+      <img src="https://res.cloudinary.com/rukkiecodes/image/upload/v1741265526/leadway/logo_hhzua0.png" alt="Bluezone Finance" style="height: 40px;" />
     </div>
 
     <!-- Content -->
@@ -47,7 +47,7 @@ router.post("/depositCancelled", async (req, res) => {
       </p>
 
       <p style="font-size: 15px; margin-top: 16px;">
-        — The Leadway Finance Team
+        — The Bluezone Finance Team
       </p>
     </div>
   </div>

@@ -11,43 +11,47 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-router.post("/depositCompleted", async (req, res) => {
+router.post("/deposit", async (req, res) => {
   const { email, name, amount } = req.body;
 
   const mailOptions = {
-    from: "Leadway Finance",
+    from: "Bluezone Finance",
     to: email,
-    subject: "Leadway Deposit Completed",
+    subject: "Processing Bluezone Deposit",
     html: `<div style="background-color: #f4f6f8; padding: 40px 0; font-family: Arial, sans-serif;">
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); overflow: hidden;">
 
     <!-- Header -->
     <div style="background-color: #1D2330; padding: 24px; text-align: center;">
-      <img src="https://res.cloudinary.com/rukkiecodes/image/upload/v1741265526/leadway/logo_hhzua0.png" alt="Leadway Finance" style="height: 40px;" />
+      <img src="https://res.cloudinary.com/rukkiecodes/image/upload/v1741265526/leadway/logo_hhzua0.png" alt="Bluezone Finance" style="height: 40px;" />
     </div>
 
-    <!-- Content -->
+    <!-- Main Content -->
     <div style="padding: 32px; color: #1D2330;">
-      <h2 style="margin-top: 0;">Deposit Successful ✅</h2>
+      <h2 style="margin-top: 0;">Deposit Request Received 💸</h2>
 
       <p style="font-size: 16px;">
         Hello <strong>${name}</strong>,
       </p>
 
       <p style="font-size: 16px;">
-        Your deposit of <strong style="color: #1D2330;">${amount}</strong> has been successfully processed and added to your wallet.
+        We’ve received your request to deposit <strong style="color: #1D2330;">${amount}</strong> into your Bluezone Finance wallet.
       </p>
 
       <p style="font-size: 16px;">
-        You can now view your updated wallet balance in the Leadway Finance app.
+        Our team is currently processing your transaction. You’ll receive a confirmation email once the deposit is successfully completed.
+      </p>
+
+      <p style="font-size: 15px; margin-top: 40px;">
+        If this wasn’t you or you need help, please contact our support team immediately.
       </p>
 
       <p style="margin-top: 40px; font-size: 15px;">
-        Thanks for banking with Leadway Finance.
+        Thanks for trusting Bluezone Finance.
       </p>
 
       <p style="font-size: 15px; margin-top: 16px;">
-        — The Leadway Finance Team
+        — The Bluezone Finance Team
       </p>
     </div>
   </div>

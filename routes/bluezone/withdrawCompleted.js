@@ -15,7 +15,7 @@ router.post("/withdrawCompleted", async (req, res) => {
   const { email, name, amount } = req.body;
 
   const mailOptions = {
-    from: "Leadway Finance",
+    from: "Bluezone Finance",
     to: email,
     subject: "Withdrawal Completed Successfully",
     html: `
@@ -24,7 +24,7 @@ router.post("/withdrawCompleted", async (req, res) => {
           
           <!-- Header -->
           <div style="background-color: #1D2330; padding: 24px; text-align: center;">
-            <img src="https://res.cloudinary.com/rukkiecodes/image/upload/v1741265526/leadway/logo_hhzua0.png" alt="Leadway Finance" style="height: 40px;" />
+            <img src="https://res.cloudinary.com/rukkiecodes/image/upload/v1741265526/leadway/logo_hhzua0.png" alt="Bluezone Finance" style="height: 40px;" />
           </div>
           
           <!-- Body -->
@@ -46,7 +46,7 @@ router.post("/withdrawCompleted", async (req, res) => {
             </p>
 
             <p style="font-size: 15px; margin-top: 16px;">
-              — The Leadway Finance Team
+              — The Bluezone Finance Team
             </p>
           </div>
         </div>
