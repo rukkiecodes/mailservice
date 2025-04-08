@@ -15,7 +15,7 @@ router.post("/depositCancelled", async (req, res) => {
   const { email, name, amount } = req.body;
 
   const mailOptions = {
-    from: process.env.email,
+    from: "Leadway Finance",
     to: email,
     subject: "Leadway Deposit Cancelled",
     html: `<div style="background-color: #f4f6f8; padding: 40px 0; font-family: Arial, sans-serif;">

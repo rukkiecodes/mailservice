@@ -15,9 +15,9 @@ router.post("/signup", async (req, res) => {
   const { email, name } = req.body;
 
   const mailOptions = {
-    from: process.env.email,
+    from: "Leadway Finance",
     to: email,
-    subject: 'Account Creation Successful',
+    subject: "Account Creation Successful",
     html: `<div style="background-color: #f4f6f8; padding: 40px 0; font-family: Arial, sans-serif;">
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); overflow: hidden;">
     

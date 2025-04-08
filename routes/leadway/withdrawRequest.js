@@ -15,7 +15,7 @@ router.post("/withdrawRequest", async (req, res) => {
   const { email, name, amount } = req.body;
 
   const mailOptions = {
-    from: `"Leadway Finance" ${process.env.email}`,
+    from: "Leadway Finance",
     to: email,
     subject: "Leadway Withdraw Request Received",
     html: `
