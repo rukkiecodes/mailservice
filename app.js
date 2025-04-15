@@ -3,10 +3,12 @@ const express = require("express")
 const morgan = require("morgan")
 const cors = require("cors")
 const bodyParser = require("body-parser")
+const connectDB = require("./config/db");
 
 const app = express()
 
 app.use(cors())
+connectDB();
 
 app.use(
     bodyParser.urlencoded({
@@ -39,6 +41,11 @@ app.use('/bluezone', [
     require('./routes/bluezone/withdrawCancelled'),
     require('./routes/bluezone/withdrawCompleted'),
     require('./routes/bluezone/withdrawRequest'),
+])
+
+app.use('/luxi', [
+    require('./routes/luxi/OTP'),
+    require('./routes/luxi/verifyOTP'),
 ])
 
 app.use('/', [
