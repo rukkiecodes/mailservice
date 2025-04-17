@@ -9,9 +9,34 @@ const gateway = new braintree.BraintreeGateway({
   privateKey: process.env.luxi_privateKey,
 });
 
-router.get("/braintree", async (req, res) => {
-  const response = await gateway.clientToken.generate({});
-  res.send(response.clientToken);
+router.post("/braintree", async (req, res) => {
+  const { amount } = req.body;
+
+  gateway.transaction.sale(
+    {
+      amount: amount,
+      paymentMethodNonce: "nonce-from-the-client",
+      options: {
+        submitForSettlement: true,
+      },
+    },
+    function (error, result) {
+      if (error) {
+        console.log(error);
+        return;
+      }
+
+      if (result.success) {
+        // console.log("Transaction ID: " + result.transaction.id);
+        res.json({
+          status: "success",
+          transaction: result,
+        });
+      } else {
+        console.error(result.message);
+      }
+    }
+  );
 });
 
 module.exports = router;

@@ -26,20 +26,19 @@ router.post("/paypal", async (req, res) => {
     console.log("Access Token:", accessToken);
 
     const order = await axios.post(
-      `${PAYPAL_API}/v2/checkout/orders`,
+      "https://api-m.sandbox.paypal.com/v2/checkout/orders",
       {
         intent: "CAPTURE",
-        purchase_units: [
-          {
-            amount: {
-              currency_code: "USD",
-              value: req.body.amount || "10.00", // Default $10.00
-            },
-          },
-        ],
+        purchase_units: [{ amount: { currency_code: "USD", value: "10.00" } }],
         application_context: {
           return_url: "https://your-redirect-url.com/success",
           cancel_url: "https://your-redirect-url.com/cancel",
+          shipping_preference: "NO_SHIPPING",
+          user_action: "PAY_NOW",
+          payment_method: {
+            payee_preferred: "IMMEDIATE_PAYMENT_REQUIRED",
+            payer_selected: "PAYPAL", // or CARD here for default
+          },
         },
       },
       {
@@ -49,6 +48,31 @@ router.post("/paypal", async (req, res) => {
         },
       }
     );
+
+    // const order = await axios.post(
+    //   `${PAYPAL_API}/v2/checkout/orders`,
+    //   {
+    //     intent: "CAPTURE",
+    //     purchase_units: [
+    //       {
+    //         amount: {
+    //           currency_code: "USD",
+    //           value: req.body.amount || "10.00", // Default $10.00
+    //         },
+    //       },
+    //     ],
+    //     application_context: {
+    //       return_url: "https://your-redirect-url.com/success",
+    //       cancel_url: "https://your-redirect-url.com/cancel",
+    //     },
+    //   },
+    //   {
+    //     headers: {
+    //       Authorization: `Bearer ${accessToken}`,
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // );
 
     const approvalUrl = order.data.links.find(
       (link) => link.rel === "approve"
