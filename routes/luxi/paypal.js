@@ -1,9 +1,4 @@
 const router = require("express").Router();
-const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
-const User = require("../../models/user");
-const userOTPVerification = require("../../models/userOTPVerification");
-const nodemailer = require("nodemailer");
 const axios = require("axios");
 
 const PAYPAL_API = "https://api-m.sandbox.paypal.com";
@@ -28,6 +23,7 @@ const getAccessToken = async () => {
 router.post("/paypal", async (req, res) => {
   try {
     const accessToken = await getAccessToken();
+    console.log("Access Token:", accessToken);
 
     const order = await axios.post(
       `${PAYPAL_API}/v2/checkout/orders`,
