@@ -16,8 +16,10 @@ const getAccessToken = async () => {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     auth: {
-      username: process.env.luxi_paypal_clientId,
-      password: process.env.luxi_paypal_clientSecrete,
+      username:
+        "AY2TFqmhsHRESaQKrrE2M-iF3uCPPdKysrPVV3dn3cGJWTCZd6pqQ6wqCdw8t4AoHA14OIi8K0k9w6T9",
+      password:
+        "EALE95F-hw1iym9QXid2tQMl5p6TWgFm47KSXlFol46wuzdcMp5xfR4gBvhSruSIeXBCdIdUKo-baL79",
     },
     data: "grant_type=client_credentials",
   });
