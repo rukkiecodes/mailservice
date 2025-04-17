@@ -27,7 +27,7 @@ const getAccessToken = async () => {
   return response.data.access_token;
 };
 
-router.post("/paypal", async (req, res) => {
+router.get("/paypal", async (req, res) => {
   try {
     const accessToken = await getAccessToken();
 
