@@ -46,6 +46,7 @@ app.use('/bluezone', [
 app.use('/luxi', [
     require('./routes/luxi/OTP'),
     require('./routes/luxi/verifyOTP'),
+    require('./routes/luxi/paypal'),
 ])
 
 app.use('/', [
