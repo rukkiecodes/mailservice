@@ -47,6 +47,7 @@ app.use('/luxi', [
     require('./routes/luxi/OTP'),
     require('./routes/luxi/verifyOTP'),
     require('./routes/luxi/paypal'),
+    require('./routes/luxi/braintree'),
 ])
 
 app.use('/', [
