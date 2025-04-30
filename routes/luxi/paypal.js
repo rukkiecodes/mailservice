@@ -7,8 +7,8 @@ router.post("/paypal", async (req, res) => {
       url: "https://api-m.sandbox.paypal.com/v1/oauth2/token",
       method: "post",
       auth: {
-        username: process.env.luxi_live_paypal_clientId,
-        password: process.env.luxi_live_paypal_clientSecrete,
+        username: process.env.luxi_paypal_clientId,
+        password: process.env.luxi_paypal_clientSecrete,
       },
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       data: "grant_type=client_credentials",

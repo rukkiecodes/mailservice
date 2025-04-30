@@ -50,6 +50,11 @@ app.use('/luxi', [
     require('./routes/luxi/braintree'),
 ])
 
+app.use("/healthTok", [
+  require("./routes/healthTok/signup"),
+  require("./routes/healthTok/verifyOTP")
+]);
+
 app.use('/', [
     require('./routes/home')
 ])
