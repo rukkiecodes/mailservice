@@ -48,6 +48,7 @@ app.use('/luxi', [
     require('./routes/luxi/verifyOTP'),
     require('./routes/luxi/paypal'),
     require('./routes/luxi/braintree'),
+    require('./routes/luxi/newDriver'),
 ])
 
 app.use("/healthTok", [

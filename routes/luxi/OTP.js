@@ -48,14 +48,14 @@ router.post("/OTP", async (req, res) => {
     transporter
       .sendMail({
         to: email,
-        subject: "Luxury OTP Verification",
+        subject: "Luxy OTP Verification",
         html: `
                 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OTP Verification - Luxury</title>
+  <title>OTP Verification - Luxy</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -105,19 +105,19 @@ router.post("/OTP", async (req, res) => {
 <body>
   <div class="email-container">
     <div class="email-header">
-      <h1>Luxury</h1>
+      <h1>Luxy</h1>
     </div>
     <div class="email-body">
       <h2>Hello,</h2>
-      <p>We received a request to verify your email for the Luxury app.</p>
+      <p>We received a request to verify your email for the Luxy app.</p>
       <p>Your One-Time Password (OTP) is:</p>
       <p class="otp-code">${otp}</p>
       <p>Please use this code to complete the verification process. The code is valid for the next 10 minutes.</p>
       <p>If you didn't request this, you can safely ignore this email.</p>
     </div>
     <div class="email-footer">
-      <p>Need help? Contact us at <a href="mailto:support@luxury.com">support@luxury.com</a></p>
-      <p>&copy; 2024 Luxury. All rights reserved.</p>
+      <p>Need help? Contact us at <a href="mailto:support@luxy.com">support@luxy.com</a></p>
+      <p>&copy; 2024 Luxy. All rights reserved.</p>
     </div>
   </div>
 </body>
