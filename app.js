@@ -43,13 +43,14 @@ app.use('/bluezone', [
     require('./routes/bluezone/withdrawRequest'),
 ])
 
-app.use('/luxi', [
-    require('./routes/luxi/OTP'),
-    require('./routes/luxi/verifyOTP'),
-    require('./routes/luxi/paypal'),
-    require('./routes/luxi/braintree'),
-    require('./routes/luxi/newDriver'),
-])
+app.use("/luxi", [
+  require("./routes/luxi/OTP"),
+  require("./routes/luxi/verifyOTP"),
+  require("./routes/luxi/paypal"),
+  require("./routes/luxi/braintree"),
+  require("./routes/luxi/newDriver"),
+  require("./routes/luxi/newRide"),
+]);
 
 app.use("/healthTok", [
   require("./routes/healthTok/signup"),
