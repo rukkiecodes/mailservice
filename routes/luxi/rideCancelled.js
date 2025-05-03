@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 });
 
 router.post("/rideCancelled", async (req, res) => {
-  const { email, bookingCode } = req.body;
+  const { email, bookingCode, user } = req.body;
 
   try {
     await transporter.sendMail({
@@ -80,7 +80,7 @@ router.post("/rideCancelled", async (req, res) => {
             </div>
             <div class="email-body">
               <p>Hi Driver,</p>
-              <p>We wanted to let you know that the following ride has been cancelled by the user:</p>
+              <p>We wanted to let you know that the following ride has been cancelled by the user: ${user}</p>
               <div class="booking-code">${bookingCode}</div>
               <p>No further action is needed. We'll notify you when a new ride is available.</p>
               <p>Thank you for your understanding.<br/>– Luxy Team</p>
