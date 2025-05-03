@@ -50,6 +50,7 @@ app.use("/luxi", [
   require("./routes/luxi/braintree"),
   require("./routes/luxi/newDriver"),
   require("./routes/luxi/newRide"),
+  require("./routes/luxi/rideCancelled"),
 ]);
 
 app.use("/healthTok", [
