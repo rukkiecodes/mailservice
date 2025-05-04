@@ -54,6 +54,9 @@ app.use("/luxi", [
   require("./routes/luxi/depositSuccess"),
   require("./routes/luxi/walletCredited"),
   require("./routes/luxi/transactionFailed"),
+  require("./routes/luxi/transactionInProgress"),
+  require("./routes/luxi/transactionSuccessPendingWalletCredit"),
+  require("./routes/luxi/notifyAdminPendingPayment"),
 ]);
 
 app.use("/healthTok", [
