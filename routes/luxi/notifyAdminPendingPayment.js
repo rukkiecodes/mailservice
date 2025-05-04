@@ -84,7 +84,7 @@ router.post("/notifyAdminPendingPayment", async (req, res) => {
               <p>Hello Admin,</p>
               <p><strong>${userFullName}</strong> (<em>${email}</em>) has made a payment and is waiting for confirmation.</p>
               <div class="details-box">
-                Amount: ₦${amount}<br />
+                Amount: ${amount}<br />
                 Reference: ${reference}<br />
                 Method: ${paymentMethod}<br />
                 Status: Awaiting Confirmation
