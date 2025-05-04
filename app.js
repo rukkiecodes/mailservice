@@ -51,6 +51,9 @@ app.use("/luxi", [
   require("./routes/luxi/newDriver"),
   require("./routes/luxi/newRide"),
   require("./routes/luxi/rideCancelled"),
+  require("./routes/luxi/depositSuccess"),
+  require("./routes/luxi/walletCredited"),
+  require("./routes/luxi/transactionFailed"),
 ]);
 
 app.use("/healthTok", [
