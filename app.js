@@ -63,6 +63,8 @@ app.use("/luxi", [
 app.use("/healthTok", [
   require("./routes/healthTok/signup"),
   require("./routes/healthTok/verifyOTP"),
+  require("./routes/healthTok/applicationRejection"),
+  require("./routes/healthTok/applicationApproved"),
   //   Stream
   require("./routes/healthTok/stream/register"),
 ]);
