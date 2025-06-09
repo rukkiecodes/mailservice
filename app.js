@@ -69,6 +69,10 @@ app.use("/healthTok", [
   require("./routes/healthTok/stream/register"),
 ]);
 
+app.use("/recido", [
+  require("./routes/recido/share")
+]);
+
 app.use("/", [require("./routes/home")]);
 
 // Error handling
