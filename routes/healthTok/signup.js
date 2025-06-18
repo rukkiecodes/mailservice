@@ -15,9 +15,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const generateOTP = () => {
-  return `${Math.floor(1000 + Math.random() * 9000)}`;
-};
+const generateOTP = () => `${Math.floor(1000 + Math.random() * 9000)}`;
 
 const generateEmailTemplate = (otp) => {
   return `
@@ -143,8 +141,6 @@ router.post("/OTP", async (req, res) => {
       subject: "HealthTok OTP Verification",
       html: emailTemplate,
     });
-
-    console.log("Email sent");
 
     return res.status(200).json({
       message: "Authentication was successful",

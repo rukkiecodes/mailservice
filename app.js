@@ -73,6 +73,11 @@ app.use("/recido", [
   require("./routes/recido/share")
 ]);
 
+app.use("/artisan", [
+  require("./routes/getArtisan/signup"),
+  require("./routes/getArtisan/verifyOTP")
+]);
+
 app.use("/", [require("./routes/home")]);
 
 // Error handling
