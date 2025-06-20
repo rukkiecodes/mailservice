@@ -65,6 +65,7 @@ app.use("/healthTok", [
   require("./routes/healthTok/verifyOTP"),
   require("./routes/healthTok/applicationRejection"),
   require("./routes/healthTok/applicationApproved"),
+  require("./routes/healthTok/applicationSent"),
   //   Stream
   require("./routes/healthTok/stream/register"),
 ]);
