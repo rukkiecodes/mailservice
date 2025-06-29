@@ -68,6 +68,9 @@ app.use("/healthTok", [
   require("./routes/healthTok/applicationSent"),
   //   Stream
   require("./routes/healthTok/stream/register"),
+
+  // paystack
+  require("./routes/healthTok/paystack/checkout"),
 ]);
 
 app.use("/recido", [
