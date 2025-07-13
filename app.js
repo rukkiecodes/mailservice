@@ -73,10 +73,6 @@ app.use("/healthTok", [
   require("./routes/healthTok/paystack/checkout"),
 ]);
 
-app.use("/recido", [
-  require("./routes/recido/share")
-]);
-
 app.use("/artisan", [
   require("./routes/getArtisan/signup"),
   require("./routes/getArtisan/verifyOTP")
