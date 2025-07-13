@@ -72,6 +72,7 @@ app.use("/healthTok", [
   // paystack
   require("./routes/healthTok/paystack/initiatePayment"),
   require("./routes/healthTok/paystack/verifyPayment"),
+  require("./routes/healthTok/paystack/banks"),
 ]);
 
 app.use("/artisan", [
