@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const { PAYSTACK_SECRET_KEY } = require("../../../libs/payStackKey");
+
+const PAYSTACK_SECRET_KEY = process.env.healthtok_Test_Secrete_key
+// const PAYSTACK_SECRET_KEY = process.env.healthtok_Live_Secrete_key
 
 // POST /verifyPayment
 router.post("/verifyPayment", async (req, res) => {
@@ -19,7 +21,7 @@ router.post("/verifyPayment", async (req, res) => {
       `https://api.paystack.co/transaction/verify/${reference}`,
       {
         headers: {
-          Authorization: `Bearer ${PAYSTACK_SECRET_KEY()}`,
+          Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`,
           "Content-Type": "application/json",
         },
       }
