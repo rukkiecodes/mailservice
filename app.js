@@ -70,7 +70,7 @@ app.use("/healthTok", [
   require("./routes/healthTok/stream/register"),
 
   // paystack
-  require("./routes/healthTok/paystack/checkout"),
+  require("./routes/healthTok/paystack/initiatePayment"),
 ]);
 
 app.use("/artisan", [
