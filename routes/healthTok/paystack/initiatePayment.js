@@ -6,9 +6,9 @@ const PAYSTACK_SECRET_KEY = process.env.healthtok_Test_Secrete_key
 // const PAYSTACK_SECRET_KEY = process.env.healthtok_Live_Secrete_key
 
 router.post("/initiatePayment", async (req, res) => {
-  const { email, amount, patientId, doctorId, appointmentId } = req.body;
+  const { email, amount } = req.body;
 
-  if (!email || !amount || !patientId || !doctorId || !appointmentId) {
+  if (!email || !amount) {
     return res.status(400).json({
       success: false,
       message: "Missing required fields.",
@@ -21,11 +21,6 @@ router.post("/initiatePayment", async (req, res) => {
       {
         email,
         amount: amount * 100, // Convert to kobo
-        metadata: {
-          patientId,
-          doctorId,
-          appointmentId,
-        },
         callback_url: "https://yourapp.com/verify-payment", // Redirect after payment
       },
       {
