@@ -73,11 +73,20 @@ app.use("/healthTok", [
   require("./routes/healthTok/paystack/initiatePayment"),
   require("./routes/healthTok/paystack/verifyPayment"),
   require("./routes/healthTok/paystack/banks"),
+  require("./routes/healthTok/paystack/createRecipient"),
+  require("./routes/healthTok/paystack/initiateTransfer"),
 ]);
 
 app.use("/artisan", [
   require("./routes/getArtisan/signup"),
   require("./routes/getArtisan/verifyOTP")
+]);
+
+app.use("/recido", [
+  require("./routes/recido/paypal/create-order"),
+  require("./routes/recido/paypal/capture-order"),
+
+  require("./routes/recido/stripe/index"),
 ]);
 
 app.use("/", [require("./routes/home")]);
@@ -110,5 +119,7 @@ app.use((error, req, res, next) => {
 const PORT = process.env.PORT || 8000;
 app.listen(
   PORT,
-  console.log(`Server running in ${process.env.NODE_ENV} mode on ${PORT}`)
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on: http://localhost:${PORT}`
+  )
 );
