@@ -83,9 +83,6 @@ app.use("/artisan", [
 ]);
 
 app.use("/recido", [
-  require("./routes/recido/paypal/create-order"),
-  require("./routes/recido/paypal/capture-order"),
-
   require("./routes/recido/stripe/index"),
 ]);
 
