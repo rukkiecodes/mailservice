@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Recido</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: #f6f8fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      font-size: 0.85rem;
+    }
+
+    .statement-container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 15px 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      border-radius: 6px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #304FFE;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+
+    .header img.logo {
+      height: 40px;
+    }
+
+    .header h1 {
+      color: #304FFE;
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    h4 {
+      color: #304FFE;
+      margin: 15px 0 6px;
+      font-size: 0.95rem;
+      border-left: 3px solid #304FFE;
+      padding-left: 6px;
+    }
+
+    .profile-section {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #f1f3ff;
+      padding: 8px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .profile-section img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid #304FFE;
+    }
+
+    .profile-details p {
+      margin: 3px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    th {
+      background-color: #304FFE;
+      color: white;
+      padding: 6px;
+      text-align: left;
+      font-weight: 500;
+      border-bottom: 1px solid #243ccf;
+    }
+
+    td {
+      padding: 5px 6px;
+      border-bottom: 1px solid #e1e4e8;
+    }
+
+    tr:hover {
+      background-color: #f9faff;
+    }
+
+    .no-data {
+      color: #777;
+      font-style: italic;
+      padding: 4px 0;
+    }
+
+    .footer {
+      margin-top: 15px;
+      text-align: right;
+      font-size: 0.75rem;
+      color: #666;
+      border-top: 1px solid #ddd;
+      padding-top: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="statement-container">
+    <!-- Header -->
+    <div class="header">
+      <img src="https://res.cloudinary.com/rukkiecodes/image/upload/v1754824567/logo_vzjxmw.png" alt="Recido Logo"
+        class="logo">
+      <h1>Recido User Data Export</h1>
+    </div>
+
+    <!-- Profile Section -->
+    <h4>Profile Information</h4>
+    <div class="profile-section">
+      <img src="<%= profile.displayImage.image %>" alt="User Picture">
+      <div class="profile-details">
+        <p><strong>User Identifier:</strong>
+          <%= profile.uid %>
+        </p>
+        <p><strong>Business name:</strong>
+          <%= profile.name %>
+        </p>
+        <p><strong>Business email:</strong>
+          <%= profile.email %>
+        </p>
+        <p><strong>Business number:</strong>
+          <%= profile.countryCode?.code %>
+            <%= profile.businessNumber %>
+        </p>
+        <p><strong>Business address:</strong>
+          <%= profile.address %>
+        </p>
+        <p><strong>Proprietor:</strong>
+          <%= profile.ownerName %>
+        </p>
+        <p><strong>Default Message:</strong>
+          <%= profile.defaultEmailMessage %>
+        </p>
+        <p><strong>Disclaimer:</strong>
+          <%= profile.disclaimer %>
+        </p>
+        <p><strong>Default Currency:</strong>
+          <%= profile.denom?.country %>
+            <%= profile.denom?.sign %>
+        </p>
+      </div>
+    </div>
+
+    <!-- Invoices -->
+    <% if (invoices.length) { %>
+      <h4>Invoices</h4>
+      <table>
+        <tr>
+          <th>Invoice ID</th>
+          <th>Customer</th>
+          <th>Invoice Date</th>
+          <th>Due Date</th>
+          <th>Total</th>
+          <th>Items</th>
+        </tr>
+        <% invoices.forEach(inv=> { %>
+          <tr>
+            <td>
+              #<%= inv.invoiceId %>
+            </td>
+            <td>
+              <%= inv.customer.name %>
+            </td>
+            <td>
+              <%= new Date(inv.invoiceDate?.timestamp).toDateString() %>
+            </td>
+            <td>
+              <%= new Date(inv.dueDate?.timestamp).toDateString() %>
+            </td>
+            <td>
+              <%= inv.total %>
+            </td>
+            <td>
+              <%= inv.items.length %>
+            </td>
+          </tr>
+          <% }) %>
+      </table>
+      <% } else { %>
+        <p class="no-data">No invoices found.</p>
+        <% } %>
+
+          <!-- Receipts -->
+          <% if (receipts.length) { %>
+            <h4>Receipts</h4>
+            <table>
+              <tr>
+                <th>Receipt ID</th>
+                <th>Customer</th>
+                <th>Receipt Date</th>
+                <th>Total</th>
+                <th>Items</th>
+              </tr>
+              <% receipts.forEach(r=> { %>
+                <tr>
+                  <td>
+                    #<%= r.receiptId %>
+                  </td>
+                  <td>
+                    <%= r.customer.name %>
+                  </td>
+                  <td>
+                    <%= new Date(r.receiptDate?.timestamp).toDateString() %>
+                  </td>
+                  <td>
+                    <%= r.total %>
+                  </td>
+                  <td>
+                    <%= r.items.length %>
+                  </td>
+                </tr>
+                <% }) %>
+            </table>
+            <% } else { %>
+              <p class="no-data">No receipts found.</p>
+              <% } %>
+
+                <!-- Quotations -->
+                <% if (quotations.length) { %>
+                  <h4>Quotations</h4>
+                  <table>
+                    <tr>
+                      <th>Quotation ID</th>
+                      <th>Customer</th>
+                      <th>Quotation Date</th>
+                      <th>Total</th>
+                      <th>Items</th>
+                    </tr>
+                    <% quotations.forEach(q=> { %>
+                      <tr>
+                        <td>
+                          #<%= q.quotationId %>
+                        </td>
+                        <td>
+                          <%= q.customer.name %>
+                        </td>
+                        <td>
+                          <%= new Date(q.quotationDate?.timestamp).toDateString() %>
+                        </td>
+                        <td>
+                          <%= q.total %>
+                        </td>
+                        <td>
+                          <%= q.items.length %>
+                        </td>
+                      </tr>
+                      <% }) %>
+                  </table>
+                  <% } else { %>
+                    <p class="no-data">No quotations found.</p>
+                    <% } %>
+
+                      <!-- Inventory -->
+                      <% if (inventory.length) { %>
+                        <h4>Inventory</h4>
+                        <table>
+                          <tr>
+                            <th>Item Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>In Stock</th>
+                            <th>Created At</th>
+                          </tr>
+                          <% inventory.forEach(i=> { %>
+                            <tr>
+                              <td>
+                                <%= i.name %>
+                              </td>
+                              <td>
+                                <%= i.description || '...' %>
+                              </td>
+                              <td>
+                                <%= i.price %>
+                              </td>
+                              <td>
+                                <%= i.quantity %>
+                              </td>
+                              <td>
+                                <%= new Date(i.createdAt.seconds * 1000).toDateString() %>
+                              </td>
+                            </tr>
+                            <% }) %>
+                        </table>
+                        <% } else { %>
+                          <p class="no-data">No items found.</p>
+                          <% } %>
+
+                            <!-- Customers -->
+                            <% if (customers.length) { %>
+                              <h4>Customers</h4>
+                              <table>
+                                <tr>
+                                  <th>Customer Name</th>
+                                  <th>Customer Phone</th>
+                                  <th>Customer Email</th>
+                                  <th>Created At</th>
+                                </tr>
+                                <% customers.forEach(c=> { %>
+                                  <tr>
+                                    <td>
+                                      <%= c.name %>
+                                    </td>
+                                    <td>
+                                      <%= c.phone || '...' %>
+                                    </td>
+                                    <td>
+                                      <%= c.email || '...' %>
+                                    </td>
+                                    <td>
+                                      <%= new Date(c.timestamp.seconds * 1000).toDateString() %>
+                                    </td>
+                                  </tr>
+                                  <% }) %>
+                              </table>
+                              <% } else { %>
+                                <p class="no-data">No customers found.</p>
+                                <% } %>
+
+                                  <!-- Footer -->
+                                  <div class="footer">
+                                    Generated on <%= new Date().toLocaleDateString() %> at <%= new
+                                        Date().toLocaleTimeString() %>
+                                  </div>
+  </div>
+</body>
+
+</html>

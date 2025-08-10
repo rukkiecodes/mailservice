@@ -84,6 +84,7 @@ app.use("/artisan", [
 
 app.use("/recido", [
   require("./routes/recido/stripe/index"),
+  require("./routes/recido/generate"),
 ]);
 
 app.use("/", [require("./routes/home")]);
