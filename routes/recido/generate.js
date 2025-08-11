@@ -3,7 +3,7 @@ const path = require("path");
 const puppeteer = require("puppeteer");
 const ejs = require("ejs");
 
-// Add generate statement
+// Add generate statements
 router.post("/generate-pdf", async (req, res) => {
   try {
     const { profile, invoices, receipts, quotations, inventory, customers } =
