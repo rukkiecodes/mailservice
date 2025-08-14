@@ -10,6 +10,7 @@
   "dependencies": {
     "@sparticuz/chromium": "^138.0.2",
     "@sparticuz/chromium-min": "^138.0.2",
+    "@stream-io/node-sdk": "^0.5.1",
     "axios": "^1.10.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",

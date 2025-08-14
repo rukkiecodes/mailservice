@@ -278,6 +278,16 @@
     follow-redirects "^1.15.9"
     tar-fs "^3.1.0"
 
+"@stream-io/node-sdk@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@stream-io/node-sdk/-/node-sdk-0.5.1.tgz#b7f78908c3b1e714e2d11011a1b907ed416f8cf0"
+  integrity sha512-qSEXWkpfmEa2bP+XQR1T0LNxyzoymWGDjrB7WXH76ZXR9HPHma/l9R3GvGIM75cALi+KS61vPitsiNYJtyqNmQ==
+  dependencies:
+    "@types/jsonwebtoken" "^9.0.3"
+    "@types/node" "^18.3.0"
+    jsonwebtoken "^9.0.2"
+    uuid "^9.0.1"
+
 "@tootallnate/once@2":
   version "2.0.0"
   resolved "https://registry.npmjs.org/@tootallnate/once/-/once-2.0.0.tgz"
@@ -333,7 +343,7 @@
   resolved "https://registry.npmjs.org/@types/http-errors/-/http-errors-2.0.5.tgz"
   integrity sha512-r8Tayk8HJnX0FztbZN7oVqGccWgw98T/0neJphO91KkmOzug1KkofZURD4UaD5uH8AqcFLfdPErnBod0u71/qg==
 
-"@types/jsonwebtoken@^9.0.4", "@types/jsonwebtoken@^9.0.8":
+"@types/jsonwebtoken@^9.0.3", "@types/jsonwebtoken@^9.0.4", "@types/jsonwebtoken@^9.0.8":
   version "9.0.10"
   resolved "https://registry.npmjs.org/@types/jsonwebtoken/-/jsonwebtoken-9.0.10.tgz"
   integrity sha512-asx5hIG9Qmf/1oStypjanR7iKTv0gXQ1Ov/jfrX6kS/EO0OFni8orbmGCn0672NHR3kXHwpAwR+B368ZGN/2rA==
@@ -362,6 +372,13 @@
   integrity sha512-Qm9OYVOFHFYg3wJoTSrz80hoec5Lia/dPp84do3X7dZvLikQvM1YpmvTBEdIr/e+U8HTkFjLHLnl78K/qjf+jQ==
   dependencies:
     undici-types "~7.8.0"
+
+"@types/node@^18.3.0":
+  version "18.19.122"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.122.tgz#e7358f8df7cc3f14e860198e1ca4dc2ed9a7de06"
+  integrity sha512-yzegtT82dwTNEe/9y+CM8cgb42WrUfMMCg2QqSddzO1J6uPmBD7qKCZ7dOHZP2Yrpm/kb0eqdNMn2MUyEiqBmA==
+  dependencies:
+    undici-types "~5.26.4"
 
 "@types/node@^22.8.7":
   version "22.16.3"
@@ -2511,21 +2528,9 @@ punycode@^2.1.0, punycode@^2.1.1, punycode@^2.3.1:
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
-puppeteer-core@24.16.0:
+puppeteer-core@24.16.0, puppeteer-core@^24.16.0:
   version "24.16.0"
   resolved "https://registry.npmjs.org/puppeteer-core/-/puppeteer-core-24.16.0.tgz"
-  integrity sha512-tZ0tJiOYaDGTRzzr2giDpf8O/55JsoqkrafS1Xu4H6S8oP4eeL6RbZzY9OzjShSf5EQvx/zAc55QKpDqzXos/Q==
-  dependencies:
-    "@puppeteer/browsers" "2.10.6"
-    chromium-bidi "7.2.0"
-    debug "^4.4.1"
-    devtools-protocol "0.0.1475386"
-    typed-query-selector "^2.12.0"
-    ws "^8.18.3"
-
-puppeteer-core@^24.16.0:
-  version "24.16.0"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-24.16.0.tgz#17fb9571ca7bcdc95c58d8c0df8fc2d5bf323b09"
   integrity sha512-tZ0tJiOYaDGTRzzr2giDpf8O/55JsoqkrafS1Xu4H6S8oP4eeL6RbZzY9OzjShSf5EQvx/zAc55QKpDqzXos/Q==
   dependencies:
     "@puppeteer/browsers" "2.10.6"
@@ -3102,6 +3107,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
+
+undici-types@~5.26.4:
+  version "5.26.5"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
+  integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
 
 undici-types@~6.21.0:
   version "6.21.0"
