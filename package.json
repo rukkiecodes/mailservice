@@ -16,6 +16,7 @@
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
     "braintree": "^3.29.0",
+    "buffer": "^6.0.3",
     "chrome-aws-lambda": "^10.1.0",
     "cloudinary": "^2.6.0",
     "cors": "^2.8.5",
