@@ -69,7 +69,8 @@ app.use("/healthTok", [
   //   Stream
   require("./routes/healthTok/stream/register"),
   // Zoom
-  require("./routes/healthTok/zoom/server"),
+  require("./routes/healthTok/zoom/video"),
+  require("./routes/healthTok/zoom/voice"),
 
   // paystack
   require("./routes/healthTok/paystack/initiatePayment"),
