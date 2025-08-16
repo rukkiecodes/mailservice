@@ -26,24 +26,23 @@ async function getZoomAccessToken() {
   return response.data.access_token;
 }
 
-// Register or update user
+// Create instant meeting
 router.post("/create-meeting", async (req, res) => {
   try {
     const token = await getZoomAccessToken();
-    const { topic, start_time, duration } = req.body;
+    const { topic } = req.body; // Only topic needed for instant meetings
 
     const meetingData = {
-      topic,
-      type: 2, // Scheduled meeting
-      start_time,
-      duration,
+      topic: topic || "Instant Meeting", // Default topic if none provided
+      type: 1, // Instant meeting (changed from 2)
       settings: {
         host_video: true,
         participant_video: true,
-        join_before_host: false,
-        mute_upon_entry: true,
+        join_before_host: true, // Allow participants to join before host
+        mute_upon_entry: false, // Don't mute for instant calls
         waiting_room: false,
         audio: "both",
+        auto_recording: "none", // No recording for instant meetings
       },
     };
 
@@ -62,7 +61,7 @@ router.post("/create-meeting", async (req, res) => {
   } catch (error) {
     console.error("Zoom API Error:", error.response?.data || error.message);
     res.status(500).json({
-      error: "Failed to create meeting",
+      error: "Failed to create instant meeting",
       details: error.response?.data || error.message,
     });
   }
