@@ -38,14 +38,35 @@ router.post("/create-meeting", async (req, res) => {
       settings: {
         host_video: true,
         participant_video: true,
-        join_before_host: true, // CRITICAL: Allows meeting to start without host
-        mute_upon_entry: false, // Don't mute for instant calls
-        waiting_room: false,
+        join_before_host: true, // CRITICAL: Start meeting without host
+        mute_upon_entry: false,
+        waiting_room: false, // CRITICAL: Must be false
         audio: "both",
-        auto_recording: "none", // No recording for instant meetings
-        enforce_login: false, // Don't require Zoom account to join
+        auto_recording: "none",
+
+        // Authentication settings
+        enforce_login: false, // Don't require Zoom account
         enforce_login_domains: "", // No domain restrictions
-        alternative_hosts: "", // No alternative hosts needed
+        meeting_authentication: false, // No meeting password required
+
+        // Additional settings for independence
+        approval_type: 2, // Automatically approve (no registration)
+        registration_type: 1, // Attendees register once and can attend any occurrence
+
+        // Host control settings
+        alternative_hosts: "", // No alternative hosts
+        use_pmi: false, // Don't use Personal Meeting ID
+        
+        // host_video: true,
+        // participant_video: true,
+        // join_before_host: true, // CRITICAL: Allows meeting to start without host
+        // mute_upon_entry: false, // Don't mute for instant calls
+        // waiting_room: false,
+        // audio: "both",
+        // auto_recording: "none", // No recording for instant meetings
+        // enforce_login: false, // Don't require Zoom account to join
+        // enforce_login_domains: "", // No domain restrictions
+        // alternative_hosts: "", // No alternative hosts needed
       },
     };
 
