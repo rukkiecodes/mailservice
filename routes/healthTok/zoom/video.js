@@ -1,72 +1,30 @@
 const { default: axios } = require("axios");
-
-// routes/stream.js
 const router = require("express").Router();
+const getZoomAccessToken = require("../../../lib/getZoomAccessToken");
 
-async function getZoomAccessToken() {
-  const ACCOUNT_ID = process.env.HEALTOK_ZOOM_ACCOUNT_ID;
-  const CLIENT_ID = process.env.HEALTOK_ZOOM_CLIENT_ID;
-  const CLIENT_SECRET = process.env.HEALTOK_ZOOM_CLIENT_SECRET;
-
-  const credentials = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString(
-    "base64"
-  );
-
-  const response = await axios.post("https://zoom.us/oauth/token", null, {
-    params: {
-      grant_type: "account_credentials",
-      account_id: ACCOUNT_ID,
-    },
-    headers: {
-      Authorization: `Basic ${credentials}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  });
-
-  return response.data.access_token;
-}
-
-// Create instant meeting
+// Create independent video meeting
 router.post("/create-meeting", async (req, res) => {
   try {
     const token = await getZoomAccessToken();
-    const { topic } = req.body; // Only topic needed for instant meetings
+    const { topic } = req.body;
 
     const meetingData = {
-      topic: topic || "Instant Meeting", // Default topic if none provided
-      type: 1, // Instant meeting (changed from 2)
+      topic: topic || "Independent Meeting",
+      type: 2, // Scheduled meeting (supports join_before_host)
+      start_time: new Date().toISOString(), // start immediately
       settings: {
         host_video: true,
         participant_video: true,
-        join_before_host: true, // CRITICAL: Start meeting without host
-        mute_upon_entry: false,
-        waiting_room: false, // CRITICAL: Must be false
+        join_before_host: true, // ✅ participants can join before host
+        waiting_room: false, // ✅ no waiting room
+        meeting_authentication: false, // ✅ no Zoom login required
+        approval_type: 2, // ✅ auto-approve
         audio: "both",
         auto_recording: "none",
-
-        // Authentication settings
-        enforce_login: false, // Don't require Zoom account
-        enforce_login_domains: "", // No domain restrictions
-        meeting_authentication: false, // No meeting password required
-
-        // Additional settings for independence
-        approval_type: 2, // Automatically approve (no registration)
-        registration_type: 1, // Attendees register once and can attend any occurrence
-
-        // Host control settings
-        alternative_hosts: "", // No alternative hosts
-        use_pmi: false, // Don't use Personal Meeting ID
-        
-        // host_video: true,
-        // participant_video: true,
-        // join_before_host: true, // CRITICAL: Allows meeting to start without host
-        // mute_upon_entry: false, // Don't mute for instant calls
-        // waiting_room: false,
-        // audio: "both",
-        // auto_recording: "none", // No recording for instant meetings
-        // enforce_login: false, // Don't require Zoom account to join
-        // enforce_login_domains: "", // No domain restrictions
-        // alternative_hosts: "", // No alternative hosts needed
+        enforce_login: false,
+        enforce_login_domains: "",
+        alternative_hosts: "",
+        use_pmi: false,
       },
     };
 
@@ -85,7 +43,7 @@ router.post("/create-meeting", async (req, res) => {
   } catch (error) {
     console.error("Zoom API Error:", error.response?.data || error.message);
     res.status(500).json({
-      error: "Failed to create instant meeting",
+      error: "Failed to create meeting",
       details: error.response?.data || error.message,
     });
   }
