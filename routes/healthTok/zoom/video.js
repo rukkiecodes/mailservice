@@ -38,11 +38,14 @@ router.post("/create-meeting", async (req, res) => {
       settings: {
         host_video: true,
         participant_video: true,
-        join_before_host: true, // Allow participants to join before host
+        join_before_host: true, // CRITICAL: Allows meeting to start without host
         mute_upon_entry: false, // Don't mute for instant calls
         waiting_room: false,
         audio: "both",
         auto_recording: "none", // No recording for instant meetings
+        enforce_login: false, // Don't require Zoom account to join
+        enforce_login_domains: "", // No domain restrictions
+        alternative_hosts: "", // No alternative hosts needed
       },
     };
 

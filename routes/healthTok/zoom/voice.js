@@ -33,16 +33,19 @@ router.post("/create-instant-voice-meeting", async (req, res) => {
     const { topic } = req.body;
 
     const meetingData = {
-      topic,
+      topic: topic || "Voice Call",
       type: 1,
       settings: {
-        host_video: false,
-        participant_video: false,
-        audio: "both",
-        join_before_host: true,
+        host_video: false, // Video disabled
+        participant_video: false, // Video disabled
+        join_before_host: true, // CRITICAL: Allows meeting to start without host
         mute_upon_entry: false,
         waiting_room: false,
+        audio: "both",
         auto_recording: "none",
+        enforce_login: false, // Don't require Zoom account to join
+        enforce_login_domains: "", // No domain restrictions
+        alternative_hosts: "", // No alternative hosts needed
       },
     };
 
