@@ -121,6 +121,6 @@ const PORT = process.env.PORT || 8000;
 app.listen(
   PORT,
   console.log(
-    `Server running in ${process.env.NODE_ENV} mode on: http://localhost:${PORT}`
+    `Mail service Server running in ${process.env.NODE_ENV} mode on: http://localhost:${PORT}`
   )
 );
